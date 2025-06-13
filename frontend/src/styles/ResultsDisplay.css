@@ -1,0 +1,239 @@
+.results-section {
+  background-color: var(--color-surface);
+  border-radius: 8px;
+  padding: var(--spacing-4);
+  box-shadow: var(--shadow-md);
+  animation: slideUp 0.5s ease-out;
+  transition: background-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-3);
+}
+
+.results-header h2 {
+  color: var(--color-text-primary);
+  font-size: 1.5rem;
+}
+
+.export-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.export-button:hover {
+  background-color: var(--color-accent-dark);
+  transform: translateY(-1px);
+}
+
+.export-button:active {
+  transform: translateY(0);
+}
+
+.file-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-3);
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.file-info p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.metrics-card {
+  background-color: rgba(124, 58, 237, 0.05);
+  border-radius: 8px;
+  padding: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
+}
+
+.metrics-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  margin-bottom: var(--spacing-2);
+  color: var(--color-accent);
+}
+
+.metrics-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-3);
+}
+
+.metric {
+  text-align: center;
+}
+
+.metric h4 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: var(--spacing-1);
+  color: var(--color-text-secondary);
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.similarity-results h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-2);
+}
+
+.similarity-note {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  background-color: rgba(245, 158, 11, 0.1);
+  padding: var(--spacing-2);
+  border-radius: 6px;
+  margin-bottom: var(--spacing-3);
+}
+
+.similarity-note svg {
+  color: var(--color-warning);
+  flex-shrink: 0;
+}
+
+.similarity-note p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.results-table th,
+.results-table td {
+  padding: var(--spacing-2);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.results-table th {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.similarity-bar-container {
+  width: 100%;
+  height: 12px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.similarity-bar {
+  height: 100%;
+  transition: width var(--transition-normal);
+}
+
+.similarity-bar.high-similarity {
+  background-color: var(--color-error);
+}
+
+.similarity-bar.medium-similarity {
+  background-color: var(--color-warning);
+}
+
+.similarity-bar.low-similarity {
+  background-color: var(--color-success);
+}
+
+.status-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.status-icon {
+  flex-shrink: 0;
+}
+
+.status-icon.plagiarized {
+  color: var(--color-error);
+}
+
+.status-icon.original {
+  color: var(--color-success);
+}
+
+span.plagiarized {
+  color: var(--color-error);
+}
+
+span.original {
+  color: var(--color-success);
+}
+
+/* Animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .results-section {
+    padding: var(--spacing-3);
+  }
+  
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-2);
+  }
+  
+  .results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-2);
+  }
+  
+  .similarity-bar-container {
+    width: 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .results-table th:nth-child(3),
+  .results-table td:nth-child(3) {
+    display: none;
+  }
+}
